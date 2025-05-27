@@ -51,7 +51,7 @@ function calculateTotalMortgage(percent, contribution, amount, countMonths) {
     let monthlyPayment = loanBody * (monthlyPercent / (1 - Math.pow(1 + monthlyPercent, -countMonths)));
 
     // Рассчитываем общую сумму, которую заплатит клиент (включая первоначальный взнос)
-    let totalPayment = contribution + (monthlyPayment * countMonths);
+    let totalPayment = monthlyPayment * countMonths;
 
     // Округляем результат до двух знаков после запятой
     totalPayment = parseFloat(totalPayment.toFixed(2)); // Округление в конце
