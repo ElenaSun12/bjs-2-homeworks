@@ -29,33 +29,33 @@ function calculateTotalMortgage(percent, contribution, amount, countMonths) {
     if (typeof contribution === 'string') contribution = parseFloat(contribution);
     if (typeof amount === 'string') amount = parseFloat(amount);
     if (typeof countMonths === 'string') countMonths = parseFloat(countMonths);
-    
+
     // Если после преобразования хотя бы один аргумент не является числом, возвращаем false
-    if (typeof percent !== 'number' || typeof contribution !== 'number' || 
+    if (typeof percent !== 'number' || typeof contribution !== 'number' ||
         typeof amount !== 'number' || typeof countMonths !== 'number') {
         return false;
     }
-   
+
     // Преобразуем годовую процентную ставку в месячную и в диапазон от 0 до 1
     let monthlyPercent = (percent / 100) / 12;
-    
+
     // Вычисляем тело кредита (сумму, которую нужно вернуть банку)
     let loanBody = amount - contribution;
-    
+
     // Проверяем, если первоначальный взнос равен сумме кредита, то клиенту ничего платить не нужно
     if (contribution >= amount) {
         return 0;
     }
-   
+
     // Рассчитываем ежемесячный платеж по формуле аннуитета
-    let monthlyPayment = loanBody * (monthlyPercent + (monthlyPercent / (Math.pow(1 + monthlyPercent, countMonths) - 1)));
-    
+    let monthlyPayment = loanBody * (monthlyPercent / (1 - Math.pow(1 + monthlyPercent, -countMonths)));
+
     // Рассчитываем общую сумму, которую заплатит клиент (включая первоначальный взнос)
     let totalPayment = contribution + (monthlyPayment * countMonths);
-    
+
     // Округляем результат до двух знаков после запятой
-    totalPayment = Math.round(totalPayment * 100) / 100;
-    
+    totalPayment = parseFloat(totalPayment.toFixed(2)); // Округление в конце
+
     // Возвращаем результат
     return totalPayment;
 }
