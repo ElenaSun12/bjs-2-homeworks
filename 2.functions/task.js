@@ -1,27 +1,30 @@
 function getArrayParams(...arr) {
-  let min = Infinity;
+	let min = Infinity;
 
-  let max = -Infinity;
+	let max = -Infinity;
 
-  let sum = 0;
+	let sum = 0;
 
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] > max) {
+	for (let i = 0; i < arr.length; i++) {
+		if (arr[i] > max) {
 
-      max = arr[i];
-    }
+			max = arr[i];
+		}
 
-    if (arr[i] < min) {
-      min = arr[i];
-    }
+		if (arr[i] < min) {
+			min = arr[i];
+		}
 
-    sum += arr[i];
-  }
+		sum += arr[i];
+	}
 
 
-  const avg = Number((sum / arr.length).toFixed(2));
-
-  return { max, min, avg };
+	const avg = Math.round((sum / arr.length) * 100) / 100;
+	return {
+		max,
+		min,
+		avg
+	}
 }
 
 // Тесты
