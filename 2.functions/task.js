@@ -16,13 +16,10 @@ function getArrayParams(...arr) {
 		sum += arr[i];
 	}
 
-	const avg = Math.round((sum / arr.length) * 100) / 100;
-	return {
-		max,
-		min,
-		avg
+ const avg = Number((sum / arr.length).toFixed(2));
+
+  return { max, min, avg };
 	}
-}
 
 // Тесты
 console.log(getArrayParams(-99, 99, 10), '{min: -99, max: 99, avg 3,33}') // { min: -99, max: 99, avg: 3.33 })
