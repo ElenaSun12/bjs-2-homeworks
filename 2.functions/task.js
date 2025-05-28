@@ -1,8 +1,6 @@
 function getArrayParams(...arr) {
 	let min = Infinity;
-
 	let max = -Infinity;
-
 	let sum = 0;
 
 	for (let i = 0; i < arr.length; i++) {
@@ -18,7 +16,6 @@ function getArrayParams(...arr) {
 		sum += arr[i];
 	}
 
-
 	const avg = Math.round((sum / arr.length) * 100) / 100;
 	return {
 		max,
@@ -28,9 +25,9 @@ function getArrayParams(...arr) {
 }
 
 // Тесты
-console.log(getArrayParams(-99, 99, 10)); // { min: -99, max: 99, avg: 3.33 }
-console.log(getArrayParams(1, 2, 3, -100, 10)); // { min: -100, max: 10, avg: -16.80 }
-console.log(getArrayParams(5)); // { min: 5, max: 5, avg: 5.00 }
+console.log(getArrayParams(-99, 99, 10), '{min: -99, max: 99, avg 3,33}') // { min: -99, max: 99, avg: 3.33 })
+console.log(getArrayParams(1, 2, 3, -100, 10), '{ min: -100, max: 10, avg: -16,80}') // { min: -100, max: 10, avg: -16.80 }
+console.log(getArrayParams(5), 'expect { min: 5, max: 5, avg: 5.00 }')  // { min: 5, max: 5, avg: 5 }
 
 function summElementsWorker(...arr) {
 
