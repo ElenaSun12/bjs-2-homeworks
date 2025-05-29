@@ -1,7 +1,7 @@
 "use strict";
 
 function solveEquation(a, b, c) {
-	const arr = [];
+	let arr = [];
 	const discriminant = b ** 2 - 4 * a * c;
 
 	if (discriminant < 0) {
@@ -37,10 +37,10 @@ function calculateTotalMortgage(percent, contribution, amount, countMonths) {
     }
 
     // Преобразуем годовую процентную ставку в месячную и в диапазон от 0 до 1
-    const monthlyPercent = (percent / 100) / 12;
+    let monthlyPercent = (percent / 100) / 12;
 
     // Вычисляем тело кредита (сумму, которую нужно вернуть банку)
-    const loanBody = amount - contribution;
+    let loanBody = amount - contribution;
 
     // Проверяем, если первоначальный взнос равен сумме кредита, то клиенту ничего платить не нужно
     if (contribution >= amount) {
@@ -48,10 +48,10 @@ function calculateTotalMortgage(percent, contribution, amount, countMonths) {
     }
 
     // Рассчитываем ежемесячный платеж по формуле аннуитета
-    const monthlyPayment = loanBody * (monthlyPercent / (1 - Math.pow(1 + monthlyPercent, -countMonths)));
+    let monthlyPayment = loanBody * (monthlyPercent / (1 - Math.pow(1 + monthlyPercent, -countMonths)));
 
     // Рассчитываем общую сумму, которую заплатит клиент (включая первоначальный взнос)
-    const totalPayment = monthlyPayment * countMonths;
+    let totalPayment = monthlyPayment * countMonths;
 
     // Округляем результат до двух знаков после запятой
     totalPayment = parseFloat(totalPayment.toFixed(2)); // Округление в конце
